@@ -1,8 +1,6 @@
-## aGENT Developer Docs
+### Broad Overview  
 
-### Description 
-
-aGENT is a Gene Regulatory Network (GRN) curator and visualizer for the [bar](http://www.bar.utoronto.ca/). GRN were manually curated from the literature, stored in a mySQL database and then visualized using javascript libraries React.js and Cytoscape.js. 
+>aGENT is a Gene Regulatory Network (GRN) curator and visualizer for the [bar](http://www.bar.utoronto.ca/). GRN were manually curated from the literature, stored in a mySQL database and then visualized using javascript libraries React.js and [Cytoscape.js.](https://js.cytoscape.org/) 
 
 ## Setting Up 
 ### Setting Up Front End for Development 
@@ -46,39 +44,51 @@ Adding items to the backend has the following organization
 1. Get username, port number and password for the bar
 2. Get username, password for mySQL user 
 
-#### mySQL database 
-
-
+#### ssh into the BAR
 
 ```markdown
 ssh -p <PORTNUM> <BAR-USERNAME>@bar.utoronto.ca 
+```
+
+#### Access mySQL database 
+
+ssh into the bar first! 
+
+```markdown
 mysql -u <MYSQL-USERNAME> -p #when prompted type password
 use interactions_vincent_v2;
 ```
 
-#### Helpful mysql commands 
-```markdown
-ssh -p <PORTNUM> <BAR-USERNAME>@bar.utoronto.ca 
-mysql -u <MYSQL-USERNAME> -p #when prompted type password
-```
-ssh into the bar (On windows use 
-3. 
+## Organization
+### Back End Organization 
+
+The crux of the backend is the mySQL database which is accessed via APIs by the front end app. 
+
+#### Important Files 
+
+- (sif files)[https://bar.utoronto.ca/GRN_SIF_Files/]
+- (grn images)[https://bar.utoronto.ca/GRN_Images/]
+
+Backup sif files: [here](https://github.com/raywoo32/grnAnnotation) and [here](https://github.com/VinLau/aGENT-GRNs)
+
+#### APIs
+
+The APIs query information stored on the BAR, which can then be visualized by the front end app. 
+
+1. [interactions api](https://bar.utoronto.ca/interactions_api)
+2. [suba4](https://bar.utoronto.ca/~vlau/suba4.php)
+3. [get samples](https://bar.utoronto.ca/~bpereira/webservices/get_sample/getSample.php)
+4. [interactions2](https://bar.utoronto.ca/interactions2/)
+
+You can find example calls in aGENT/src/helper-fns/api-calls.js
 
 
-## Back End Organization 
-
-Current GRNS uploaded [here](https://github.com/raywoo32/grnAnnotation) and [here](https://github.com/VinLau/aGENT-GRNs)
-
-### mySQL database 
-### .sif files 
-###
-
-## Front End Organization 
+### Front End Organization 
 
 The front-end of aGENT  is 
 
-### Main Components 
-### Feature Components 
+#### Main Components 
+#### Feature Components 
 
 ### Current Bug List 
 
