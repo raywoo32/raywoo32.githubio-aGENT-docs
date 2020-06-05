@@ -1,17 +1,17 @@
 # Developer Documentation
-### Broad Overview  
+## Broad Overview  
 
 >aGENT is a Gene Regulatory Network (GRN) curator and visualizer for the [bar](http://www.bar.utoronto.ca/). GRN were manually curated from the literature, stored in a mySQL database and then visualized using javascript libraries React.js and [Cytoscape.js.](https://js.cytoscape.org/) 
 
-## Setting Up 
-### Setting Up Front End for Development 
+## Front End
+### Setting Up 
 #### Prerequisites
 
 1. Install [Node.js](https://www.npmjs.com/get-npm)
 2. Git installed
 2. Request access to Private git [repo](https://github.com/VinLau/aGENT)
 
-#### Installation 
+#### Front End Installation 
 
 ```markdown
 git clone https://github.com/VinLau/aGENT
@@ -34,56 +34,7 @@ When the command below is run, you will automatically have aGENT running on loca
 npm run start 
 ```
 
-### Setting Up Backend for Development 
-
-Adding items to the backend has the following organization
-1. Manual curation in specific .sif file format, examples found [here](https://github.com/raywoo32/grnAnnotation)
-2. Use [script](https://github.com/raywoo32/readSIF) to upload to mySQL [database](https://github.com/VinLau/BAR-interactions-database)  
-
-#### Prerequisites
-
-1. Get username, port number and password for the bar
-2. Get username, password for mySQL user 
-
-#### ssh into the BAR
-
-```markdown
-ssh -p <PORTNUM> <BAR-USERNAME>@bar.utoronto.ca 
-```
-
-#### Access mySQL database 
-
-ssh into the bar first! 
-
-```markdown
-mysql -u <MYSQL-USERNAME> -p #when prompted type password
-use interactions_vincent_v2;
-```
-
 * * * 
-
-## Organization
-### Back End Organization 
-
-The crux of the backend is the mySQL [database](https://github.com/VinLau/BAR-interactions-database) which is accessed via APIs by the front end app. 
-
-#### Important Files 
-
-- [sif files](https://bar.utoronto.ca/GRN_SIF_Files/) are stored for users to download and view as well as a backup to the mySQL database (add with [this](https://github.com/raywoo32/grnAnnotation))
-- [grn images](https://bar.utoronto.ca/GRN_Images/) 
-
-Backup sif files: [here](https://github.com/raywoo32/grnAnnotation) and [here](https://github.com/VinLau/aGENT-GRNs)
-
-#### APIs
-
-The APIs query information stored on the BAR, which can then be visualized by the front end app. 
-
-1. [interactions api](https://bar.utoronto.ca/interactions_api)
-2. [suba4](https://bar.utoronto.ca/~vlau/suba4.php)
-3. [get samples](https://bar.utoronto.ca/~bpereira/webservices/get_sample/getSample.php)
-4. [interactions2](https://bar.utoronto.ca/interactions2/)
-
-You can find example calls in aGENT/src/helper-fns/api-calls.js
 
 ### Front End Organization 
 
@@ -174,7 +125,7 @@ The MenuSideBar houses the on demand exploratory features. Below is an overview 
 
 * * * 
 
-## Front end visualization decisions 
+### Front end visualization decisions 
 
 There are a certain number of ways to display information in a graph object that are supported by Cytoscape.js. Different information is conceptually visualized differently to make rich and clear data integration. 
 
@@ -195,7 +146,7 @@ In general the features operate on "details on demand", that is show the user th
 
 * * * 
 
-## File System in Front End 
+### File System in Front End 
 
 The most important files and file organization in the front end app are explained here. 
 
@@ -213,7 +164,7 @@ The most important files and file organization in the front end app are explaine
 ├── package.json    
 ├── package-lock.json    
 
-### Of note regarding files and folders
+#### Of note regarding files and folders
 > node_modules --> Created after npm install is called, stores dependencies    
 smart-components --> Components with their own state and their styling   
 dummy-components --> Components without a state and their styling    
@@ -223,12 +174,67 @@ package-lock.json --> Describes dependencies
 
 * * * 
 
-### Current Bug List 
+## Back End
+### Setting Up Backend for Development 
+
+Adding items to the backend has the following organization
+1. Manual curation in specific .sif file format, examples found [here](https://github.com/raywoo32/grnAnnotation)
+2. Use [script](https://github.com/raywoo32/readSIF) to upload to mySQL [database](https://github.com/VinLau/BAR-interactions-database)  
+
+#### Prerequisites
+
+1. Get username, port number and password for the bar
+2. Get username, password for mySQL user 
+
+#### ssh into the BAR
+
+```markdown
+ssh -p <PORTNUM> <BAR-USERNAME>@bar.utoronto.ca 
+```
+
+#### Access mySQL database 
+
+ssh into the bar first! 
+
+```markdown
+mysql -u <MYSQL-USERNAME> -p #when prompted type password
+use interactions_vincent_v2;
+```
+
+* * * 
+
+### Back End Organization 
+
+The crux of the backend is the mySQL [database](https://github.com/VinLau/BAR-interactions-database) which is accessed via APIs by the front end app. 
+
+#### Important Files 
+
+- [sif files](https://bar.utoronto.ca/GRN_SIF_Files/) are stored for users to download and view as well as a backup to the mySQL database (add with [this](https://github.com/raywoo32/grnAnnotation))
+- [grn images](https://bar.utoronto.ca/GRN_Images/) 
+
+Backup sif files: [here](https://github.com/raywoo32/grnAnnotation) and [here](https://github.com/VinLau/aGENT-GRNs)
+
+#### APIs
+
+The APIs query information stored on the BAR, which can then be visualized by the front end app. 
+
+1. [interactions api](https://bar.utoronto.ca/interactions_api)
+2. [suba4](https://bar.utoronto.ca/~vlau/suba4.php)
+3. [get samples](https://bar.utoronto.ca/~bpereira/webservices/get_sample/getSample.php)
+4. [interactions2](https://bar.utoronto.ca/interactions2/)
+
+You can find example calls in aGENT/src/helper-fns/api-calls.js
+
+* * * 
+
+## Current Bug List 
 
 - On installation react-search-box does not auto install 
 - Undo delete is buggy 
 
-### TODO
+* * * 
+
+## TODO?
 1. Update schema https://github.com/VinLau/BAR-interactions-database
 2. Update docs for readSIF 
 3. Merge grn curation .sif files to one repo 
