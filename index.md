@@ -108,24 +108,38 @@ The choice of the Home.js page and the ListGRNs.js page are for ease of integrat
 #### Cytoscape Container 
 This is the crux of the exploratory features of the app. The broad flow of information is as follows
 
-1. Information in the List GRNs page is passed 
-2. The cytoscape object is rendered by query to an API 
-3. The MenuSideBar is rendered 
+- Information in the List GRNs page is passed 
+- The externalSource API which accesses information on the GRN paper is queried
+- Both the MenuSideBar and Ctyo are rendered and passed props
 
 Importantly, cytoscape container has context - a sort of global state which stores the cytoscape object (among other things). 
 
 ##### Cytoscape Initialization 
+Occurs in Cyto.js. The information flow is as follows
+- interactions API is queried 
+- Cytoscape object is initialized in cytoscape-init.js. Along with the base initialization, the following occurs:
+  - default layout rendering 
+  - event listeners
+  - subcellular localization information 
+  - gene symbol and description
+  - a tooltip 
+  - styling from cytoscape-styles.js
+- The cytoscape object is bound to the context
+
 ##### Context 
+The context is a sort of global state that is accessible by its children. The most important part of the context is the cytoscape object. Read more about context [here](https://reactjs.org/docs/context.html#reactcreatecontext)
+
 ##### MenuSideBar 
-The MenuSideBar houses all of the on demand exploratory features. Below is an overview of the feature and implementation. This section does not go into the visualization and design decisions, see "Front end visualization decisions" below. 
+The MenuSideBar houses the on demand exploratory features. Below is an overview of the feature and implementation. This section does not go into the visualization and design decisions, see "Front end visualization decisions" below. 
 
 1. Venn
 > The Venn Diagram allow a user to upload any other GRNs, view overlap
 2. Expression Overlay
 >
 3. Centrality
->
+> 
 4. Navigate
+> A tool to centre and move the cytoscape object in the window. Nav.js 
 5. Layout
 6. Download
 7. Find Selected Targets
@@ -151,6 +165,33 @@ See the chart below for information on what different visual ideas represent.
 | Opacity                 | Venn, clicking the venn makes item outside the clicked transluscent |
 | Edge arrow shape        | Edge type (activation or repression)                                |
 | Border colour           | Cellular localization                                               |
+
+* * * 
+
+## File System in Front End 
+
+The most important files and file organization in the front end app are explained here. 
+
+node_modules
+public
+src
+package-lock.json
+package.json
+
+/aGENT
+├── node_modules // is created after npm install is called, stores dependencies 
+├── public
+├── src
+│   ├── components 
+│   │   ├── smart-components //Components with their own state and their styling
+│   │   ├── dummy-components //Components without a state and their styling
+│   ├── cytoscape // Related to rendering the cytoscape object
+│   ├── helper-fns 
+│   ├── react-context
+│   ├── static-assets
+├── package.json //Package Settings
+├── package-lock.json //Describes dependencies
+
 
 * * * 
 
