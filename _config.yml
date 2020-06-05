@@ -1,6 +1,6 @@
 title: aGENT Docs
 description: Developer documentation for the BAR's gene regulatory network visualizer aGENT. 
-logo: /assets/img/logo.png
+logo: bar.png
 show_downloads: true
 google_analytics: 
 theme: jekyll-theme-minimal
