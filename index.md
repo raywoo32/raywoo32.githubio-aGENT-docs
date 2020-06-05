@@ -193,18 +193,12 @@ package.json
 ├── package-lock.json    
 
 ### Of note regarding files and folders
-node_modules
-> Created after npm install is called, stores dependencies    
-smart-components 
-> Components with their own state and their styling   
-dummy-components 
-> Components without a state and their styling    
-cytoscape 
-> Related to rendering the cytoscape object   
-package.json 
-> Package Settings   
-package-lock.json 
->Describes dependencies   
+> node_modules --> Created after npm install is called, stores dependencies    
+smart-components --> Components with their own state and their styling   
+dummy-components -->Components without a state and their styling    
+cytoscape --> Related to rendering the cytoscape object   
+package.json --> Package Settings   
+package-lock.json --> Describes dependencies   
 
 * * * 
 
