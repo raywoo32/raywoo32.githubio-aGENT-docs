@@ -179,19 +179,32 @@ package-lock.json
 package.json
 
 /aGENT    
-├── node_modules // is created after npm install is called, stores dependencies    
-├── public   
+├── node_modules   
+├── public    
 ├── src   
 │   ├── components    
-│   │   ├── smart-components //Components with their own state and their styling   
-│   │   ├── dummy-components //Components without a state and their styling    
-│   ├── cytoscape // Related to rendering the cytoscape object   
+│   │   ├── smart-components  
+│   │   ├── dummy-components   
+│   ├── cytoscape   
 │   ├── helper-fns    
 │   ├── react-context   
 │   ├── static-assets  
-├── package.json //Package Settings   
-├── package-lock.json //Describes dependencies   
+├── package.json    
+├── package-lock.json    
 
+### Of note regarding files and folders
+node_modules
+> Created after npm install is called, stores dependencies    
+smart-components 
+> Components with their own state and their styling   
+dummy-components 
+> Components without a state and their styling    
+cytoscape 
+> Related to rendering the cytoscape object   
+package.json 
+> Package Settings   
+package-lock.json 
+>Describes dependencies   
 
 * * * 
 
