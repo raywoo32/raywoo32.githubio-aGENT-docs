@@ -1,4 +1,36 @@
-## Welcome to GitHub Pages
+## aGENT Developer Docs
+
+### Description 
+
+aGENT is a Gene Regulatory Network (GRN) curator and visualizer. 
+
+### Setting Up 
+#### Prerequisites
+
+1. Install [Node.js](https://www.npmjs.com/get-npm)
+2. Git installed
+2. Request access to Private git [repo](https://github.com/VinLau/aGENT)
+
+#### Installation 
+
+```markdown
+git clone https://github.com/VinLau/aGENT
+cd aGENT
+npm install
+npm audit fix 
+cd node_modules
+cd react-search-box
+npm install 
+cd ..
+cd ..
+npm run start 
+```
+
+# Running 
+```markdown
+
+```
+
 
 You can use the [editor on GitHub](https://github.com/raywoo32/raywoo32.githubio-aGENT-docs/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
 
