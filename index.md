@@ -2,9 +2,10 @@
 
 ### Description 
 
-aGENT is a Gene Regulatory Network (GRN) curator and visualizer. 
+aGENT is a Gene Regulatory Network (GRN) curator and visualizer for the [bar](http://www.bar.utoronto.ca/). GRN were manually curated from the literature, stored in a mySQL database and then visualized using javascript libraries React.js and Cytoscape.js. 
 
-### Setting Up 
+## Setting Up 
+### Setting Up Front End for Development 
 #### Prerequisites
 
 1. Install [Node.js](https://www.npmjs.com/get-npm)
@@ -17,7 +18,7 @@ aGENT is a Gene Regulatory Network (GRN) curator and visualizer.
 git clone https://github.com/VinLau/aGENT
 cd aGENT
 npm install
-npm audit fix 
+npm audit fix #If flag given 
 cd node_modules
 cd react-search-box
 npm install 
@@ -26,19 +27,70 @@ cd ..
 npm run start 
 ```
 
-# Running 
-```markdown
+#### Running 
 
+When the command below is run, you will automatically have aGENT running on localhost:3000/AGENT 
+
+```markdown
+npm run start 
 ```
 
+### Setting Up Backend for Development 
 
-You can use the [editor on GitHub](https://github.com/raywoo32/raywoo32.githubio-aGENT-docs/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+Adding items to the backend has the following organization
+1. Manual curation in specific .sif file format, examples found [here](https://github.com/raywoo32/grnAnnotation)
+2. Use [script](https://github.com/raywoo32/readSIF) to upload to mySQL [database](https://github.com/VinLau/BAR-interactions-database)  
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+#### Prerequisites
 
-### Markdown
+1. Get username, port number and password for the bar
+2. Get username, password for mySQL user 
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+#### mySQL database 
+
+
+
+```markdown
+ssh -p <PORTNUM> <BAR-USERNAME>@bar.utoronto.ca 
+mysql -u <MYSQL-USERNAME> -p #when prompted type password
+use interactions_vincent_v2;
+```
+
+#### Helpful mysql commands 
+```markdown
+ssh -p <PORTNUM> <BAR-USERNAME>@bar.utoronto.ca 
+mysql -u <MYSQL-USERNAME> -p #when prompted type password
+```
+ssh into the bar (On windows use 
+3. 
+
+
+## Back End Organization 
+
+Current GRNS uploaded [here](https://github.com/raywoo32/grnAnnotation) and [here](https://github.com/VinLau/aGENT-GRNs)
+
+### mySQL database 
+### .sif files 
+###
+
+## Front End Organization 
+
+The front-end of aGENT  is 
+
+### Main Components 
+### Feature Components 
+
+### Current Bug List 
+
+- On installation react-search-box does not auto install 
+- 
+
+### TODO
+1. Update schema https://github.com/VinLau/BAR-interactions-database
+2. Update docs for readSIF 
+3. Merge grn curation .sif files to one repo 
+4. Make aGENT github user with all important working repositories forked? readSIF, aGENT, grnAnnotations, mySQL database, https://github.com/VinLau/react-search-box Stop deprecation and disuse 
+
 
 ```markdown
 Syntax highlighted code block
@@ -58,12 +110,3 @@ Syntax highlighted code block
 [Link](url) and ![Image](src)
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/raywoo32/raywoo32.githubio-aGENT-docs/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
