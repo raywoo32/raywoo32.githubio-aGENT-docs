@@ -3,6 +3,8 @@
 
 >aGENT is a Gene Regulatory Network (GRN) curator and visualizer for the [bar](http://www.bar.utoronto.ca/). GRN were manually curated from the literature, stored in a mySQL database and then visualized using javascript libraries React.js and [Cytoscape.js.](https://js.cytoscape.org/) 
 
+* * * 
+
 ## Front End
 ### Setting Up 
 #### Prerequisites
@@ -33,8 +35,6 @@ When the command below is run, you will automatically have aGENT running on loca
 ```markdown
 npm run start 
 ```
-
-* * * 
 
 ### Front End Organization 
 
@@ -123,8 +123,6 @@ The MenuSideBar houses the on demand exploratory features. Below is an overview 
 > Allows a user to highlight the gene by informal or formal name 
 - Rendered in MenuSideBar
 
-* * * 
-
 ### Front end visualization decisions 
 
 There are a certain number of ways to display information in a graph object that are supported by Cytoscape.js. Different information is conceptually visualized differently to make rich and clear data integration. 
@@ -144,9 +142,8 @@ See the chart below for information on what different visual ideas represent.
 
 In general the features operate on "details on demand", that is show the user the simplest implementation and get details only when asked by the user. 
 
-* * * 
 
-### File System in Front End 
+### Front End File System 
 
 The most important files and file organization in the front end app are explained here. 
 
