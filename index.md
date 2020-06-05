@@ -1,3 +1,4 @@
+# Developer Documentation
 ### Broad Overview  
 
 >aGENT is a Gene Regulatory Network (GRN) curator and visualizer for the [bar](http://www.bar.utoronto.ca/). GRN were manually curated from the literature, stored in a mySQL database and then visualized using javascript libraries React.js and [Cytoscape.js.](https://js.cytoscape.org/) 
@@ -59,6 +60,8 @@ mysql -u <MYSQL-USERNAME> -p #when prompted type password
 use interactions_vincent_v2;
 ```
 
+* * * 
+
 ## Organization
 ### Back End Organization 
 
@@ -88,15 +91,68 @@ The front-end of aGENT was made using [create react app](https://reactjs.org/doc
 
 1. Home Page
 2. List GRNs
-3. GRN visualizer 
+3. Cytoscape Container 
 
 #### Home Page
-> The home page is where the user is presented with the logo and a search box to search by gene/tag/experiment/condition. 
+The home page is where the user is presented with the logo and a search box to search by gene/tag/experiment/condition. When the search query is complete aGENT will present the List GRNs page where all relevant GRNs will be shown. 
 
-When the search query is complete aGENT will present the 
+#### List GRNs
+For each GRN the following is shown:
+- GRN title
+- Tagged information
+- GRN description
+- GRN Image
 
-#### Main Components 
-#### Feature Components 
+The choice of the Home.js page and the ListGRNs.js page are for ease of integration with ePlant. 
+
+#### Cytoscape Container 
+This is the crux of the exploratory features of the app. The broad flow of information is as follows
+
+1. Information in the List GRNs page is passed 
+2. The cytoscape object is rendered by query to an API 
+3. The MenuSideBar is rendered 
+
+Importantly, cytoscape container has context - a sort of global state which stores the cytoscape object (among other things). 
+
+##### Cytoscape Initialization 
+##### Context 
+##### MenuSideBar 
+The MenuSideBar houses all of the on demand exploratory features. Below is an overview of the feature and implementation. This section does not go into the visualization and design decisions, see "Front end visualization decisions" below. 
+
+1. Venn
+> The Venn Diagram allow a user to upload any other GRNs, view overlap
+2. Expression Overlay
+>
+3. Centrality
+>
+4. Navigate
+5. Layout
+6. Download
+7. Find Selected Targets
+8. Motifs
+9. Shortest Path
+10. Search Box
+
+* * * 
+
+## Front end visualization decisions 
+
+There are a certain number of ways to display information in a graph object that are supported by Cytoscape.js. Different information is conceptually visualized differently to make rich and clear data integration. 
+
+See the chart below for information on what different visual ideas represent. 
+
+| Visual Cue              | Feature                                                             | 
+|:------------------------|:--------------------------------------------------------------------|
+| Edge colour             | Edge type (yellow ppi and green pdi)                                | 
+| Edge width              | Part of Path Display (Motifs and Shortest Path)                     |
+| Node colour             | Expression Overlay                                                  | 
+| Node selected           | Part of Path Display (Motifs and Shortest Path)                     | 
+| Node size               | Centrality                                                          |
+| Opacity                 | Venn, clicking the venn makes item outside the clicked transluscent |
+| Edge arrow shape        | Edge type (activation or repression)                                |
+| Border colour           | Cellular localization                                               |
+
+* * * 
 
 ### Current Bug List 
 
