@@ -62,12 +62,12 @@ use interactions_vincent_v2;
 ## Organization
 ### Back End Organization 
 
-The crux of the backend is the mySQL database which is accessed via APIs by the front end app. 
+The crux of the backend is the mySQL [database](https://github.com/VinLau/BAR-interactions-database) which is accessed via APIs by the front end app. 
 
 #### Important Files 
 
-- (sif files)[https://bar.utoronto.ca/GRN_SIF_Files/]
-- (grn images)[https://bar.utoronto.ca/GRN_Images/]
+- [sif files](https://bar.utoronto.ca/GRN_SIF_Files/) are stored for users to download and view as well as a backup to the mySQL database (add with [this](https://github.com/raywoo32/grnAnnotation))
+- [grn images](https://bar.utoronto.ca/GRN_Images/) 
 
 Backup sif files: [here](https://github.com/raywoo32/grnAnnotation) and [here](https://github.com/VinLau/aGENT-GRNs)
 
@@ -82,10 +82,18 @@ The APIs query information stored on the BAR, which can then be visualized by th
 
 You can find example calls in aGENT/src/helper-fns/api-calls.js
 
-
 ### Front End Organization 
 
-The front-end of aGENT  is 
+The front-end of aGENT was made using [create react app](https://reactjs.org/docs/create-a-new-react-app.html). There are 3 main pages in the app each which will be explored below: 
+
+1. Home Page
+2. List GRNs
+3. GRN visualizer 
+
+#### Home Page
+> The home page is where the user is presented with the logo and a search box to search by gene/tag/experiment/condition. 
+
+When the search query is complete aGENT will present the 
 
 #### Main Components 
 #### Feature Components 
@@ -99,24 +107,10 @@ The front-end of aGENT  is
 1. Update schema https://github.com/VinLau/BAR-interactions-database
 2. Update docs for readSIF 
 3. Merge grn curation .sif files to one repo 
-4. Make aGENT github user with all important working repositories forked? readSIF, aGENT, grnAnnotations, mySQL database, https://github.com/VinLau/react-search-box Stop deprecation and disuse 
+4. Make aGENT github user with all important working repositories forked? readSIF, aGENT, grnAnnotations, mySQL database, apis https://github.com/VinLau/react-search-box Stop deprecation and disuse. Or make location on BAR very clear. 
 
 
 ```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+![Image](src)
 ```
 
