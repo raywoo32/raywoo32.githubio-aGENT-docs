@@ -180,16 +180,27 @@ package.json
 
 /aGENT
 ├── node_modules // is created after npm install is called, stores dependencies 
+
 ├── public
+
 ├── src
+
 │   ├── components 
+
 │   │   ├── smart-components //Components with their own state and their styling
+
 │   │   ├── dummy-components //Components without a state and their styling
+
 │   ├── cytoscape // Related to rendering the cytoscape object
+
 │   ├── helper-fns 
+
 │   ├── react-context
+
 │   ├── static-assets
+
 ├── package.json //Package Settings
+
 ├── package-lock.json //Describes dependencies
 
 
