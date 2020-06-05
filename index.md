@@ -110,7 +110,7 @@ This is the crux of the exploratory features of the app. The broad flow of infor
 
 - Information in the List GRNs page is passed 
 - The externalSource API which accesses information on the GRN paper is queried
-- Both the MenuSideBar and Ctyo are rendered and passed props
+- Both the MenuSideBar and Cyto are rendered and passed props
 
 Importantly, cytoscape container has context - a sort of global state which stores the cytoscape object (among other things). 
 
@@ -133,19 +133,44 @@ The context is a sort of global state that is accessible by its children. The mo
 The MenuSideBar houses the on demand exploratory features. Below is an overview of the feature and implementation. This section does not go into the visualization and design decisions, see "Front end visualization decisions" below. 
 
 1. Venn
-> The Venn Diagram allow a user to upload any other GRNs, view overlap
+> The Venn Diagram allows a user to upload any other GRNs, view overlap in genes and highlight genes from a particular network. 
+- Smart component Venn.js
+- On upload the cytoscape initialization is called and API is queried
+- Uses d3 package
 2. Expression Overlay
->
+> The user can select the type of expression, the atlas, the tissue and then load or remove expression 
+- Rendered directly in MenuSideBar
+- Queries api on expression load 
 3. Centrality
-> 
+> The user can select betweennes or degree centrality and visualize
+- Dummy component Centrality.js
+- Calculates centrality from the cytoscape object and styles
 4. Navigate
-> A tool to centre and move the cytoscape object in the window. Nav.js 
+> A tool to centre and move the cytoscape object in the window. 
+- Dummy component Nav.js 
 5. Layout
+> Allows the user to pick from 1 of 4 layouts 
+- Dummy component Layout.js
 6. Download
+> Links the user to .sif file hosted on the BAR
+- Dummy component DownloadUpload.js
 7. Find Selected Targets
+> User selects edges on the cytoscape interface, then choses to display by pdi or ppi, this opens a modal which shows the interaction type and allows the user to download a csv of the information 
+- Smart component FindSelectedTargets.js
+- Looks at the cytoscape object to render modals on demand
+- Uses react-table-v6 library and react-modal
 8. Motifs
+> Allows the user to use a slider to look through 2 types of motifs 
+- Smart Component Motifs.js
+- Motif API is queried on variable collapse opening
+- Binds motifs to state, and loops through them on demand 
 9. Shortest Path
+> Allows the user to choose 2 genes and find the shortest path between them if it exists
+- Smart component ShortestPath.js
+- Looks at the cytoscape object and uses cytoscape methods 
 10. Search Box
+> Allows a user to highlight the gene by informal or formal name 
+- Rendered in MenuSideBar
 
 * * * 
 
@@ -166,17 +191,13 @@ See the chart below for information on what different visual ideas represent.
 | Edge arrow shape        | Edge type (activation or repression)                                |
 | Border colour           | Cellular localization                                               |
 
+In general the features operate on "details on demand", that is show the user the simplest implementation and get details only when asked by the user. 
+
 * * * 
 
 ## File System in Front End 
 
 The most important files and file organization in the front end app are explained here. 
-
-node_modules
-public
-src
-package-lock.json
-package.json
 
 /aGENT    
 ├── node_modules   
@@ -195,7 +216,7 @@ package.json
 ### Of note regarding files and folders
 > node_modules --> Created after npm install is called, stores dependencies    
 smart-components --> Components with their own state and their styling   
-dummy-components -->Components without a state and their styling    
+dummy-components --> Components without a state and their styling    
 cytoscape --> Related to rendering the cytoscape object   
 package.json --> Package Settings   
 package-lock.json --> Describes dependencies   
@@ -205,7 +226,7 @@ package-lock.json --> Describes dependencies
 ### Current Bug List 
 
 - On installation react-search-box does not auto install 
-- 
+- Undo delete is buggy 
 
 ### TODO
 1. Update schema https://github.com/VinLau/BAR-interactions-database
@@ -214,7 +235,4 @@ package-lock.json --> Describes dependencies
 4. Make aGENT github user with all important working repositories forked? readSIF, aGENT, grnAnnotations, mySQL database, apis https://github.com/VinLau/react-search-box Stop deprecation and disuse. Or make location on BAR very clear. 
 
 
-```markdown
-![Image](src)
-```
 
